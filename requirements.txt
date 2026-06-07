@@ -1,6 +1,6 @@
-streamlit==1.28.0
-tensorflow==2.14.0
-opencv-python-headless==4.8.1.78
-numpy==1.24.3
-pillow==10.0.0
-protobuf==3.20.3
+streamlit
+keras
+numpy
+pillow
+opencv-python-headless
+h5py

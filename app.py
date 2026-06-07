@@ -1,12 +1,21 @@
 
 import numpy as np
 import cv2
-import tensorflow as tf
-from tensorflow import keras
 import streamlit as st
+from PIL import Image
+import keras
+import h5py
 
-model = keras.models.load_model("my_model (1).h5", compile=False)
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+@st.cache_resource
+def load_model():
+    return keras.models.load_model("my_model (1).h5", compile=False)
+
+@st.cache_resource  
+def load_cascade():
+    return cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+
+model = load_model()
+face_cascade = load_cascade()
 
 st.title("Drowsiness Detection")
 nav_choice = st.sidebar.radio("Navigation", ("Home", "Sleep Detection", "Help Us Improve"), index=0)
